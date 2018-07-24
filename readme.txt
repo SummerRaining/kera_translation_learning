@@ -22,6 +22,7 @@ trainAndval:
         ....
 安排成这种结构，可以使用generator = ImageDataGenerator()构建生成器后，
 使用generator.flow_from_directory()方法读取图像。
-
+数据来源：http://download.tensorflow.org/example_images/flower_photos.tgz
+使用平台：window10,anaconda+keras
 结果：
 经过一个小时的训练（使用显卡1080ti），训练集上的准确率0.92，验证集上0.78。效果与预期相差很大，不知道为啥？正在想办法解决。。。
