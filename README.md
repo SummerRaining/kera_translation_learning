@@ -4,11 +4,11 @@
 * 编辑器：spyder
 * 工具：keras  
 
-##总体思路
+## 总体思路
 * 使用inceptionv3等模型，在训练集和验证集上提取出特征和label并作为h5进行保存。可以使用多个模型保存特征。提取出特征后，构建两层神经网络做分类器。进行训练，训练速度很快。总共只需5分钟就能得到一个94%的分类器。
 * 修改keras中自带的resize方法，改成antialias,原有方法会产生纹波.  
 
-##实验内容
+## 实验内容
 * 5种不同的花图片，共3600张。分别放在5个文件夹中，取10%作为验证集，使用inceptionv3,vgg16,residual50提取特征。
 * ![flower1](flower1.jpg)
 * ![flower2](flower2.jpg)
@@ -16,7 +16,7 @@
 * ![flower4](flower4.jpg)
 * ![flower5](flower5.jpg)
 
-##具体步骤
+## 具体步骤
 * 数据集：[链接](http://download.tensorflow.org/example_images/flower_photos.tgz)
 * divide_trainAndval.py将原文件夹，切分成train和val两个文件夹。  
 * inceptionv3,inceptionv3,vgg16,residual50提取特征,代码:
@@ -68,8 +68,8 @@ with h5py.File("data\\feature") as h:
 ## 结果  
 * 训练速度很快，在2000张图片（400\*400）时只用5分钟即可完成所有训练。而使用完整的迁移学习+数据增强+fine tune 需要**10个小时**才能得到最终结果。因此该方法适合做一个迁移学习的baseline，查看迁移学习是否有效。
 * 特征提取3300张图片共需要5分钟，使用提取好的特征进行训练很快，几乎秒完成。结果：训练集上的正确率：95.07%，验证集上的正确率：93.22% (注：有时候会出现很差的情况，无法训练，故需要多训练两次看结果)
-![result](result.png)  
+![result](result.PNG)  
 * 使用多一层的dense（512），结果变好一些。96.67%，验证集上的正确率：94.21%。这里可以看出多使用一层有明显提升。
-![result](result1.png) 
+![result](result1.PNG) 
 
 
