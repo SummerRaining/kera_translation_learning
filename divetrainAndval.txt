@@ -1,2 +1,0 @@
-由于使用generator.flow_from_directory()和model.fit_generator()。
-训练集和验证集应该分开，并且与原数据集有相同的结构，于是编写了dive_trainAndval.py 来完成。
